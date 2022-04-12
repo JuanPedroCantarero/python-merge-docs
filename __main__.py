@@ -3,7 +3,7 @@ import cmd
 import os.path
 import PySimpleGUI as sg
 
-outputPath = './output/data.csv'
+outputPath = './data.csv'
 
 class EVENTS_KEY():
     FOLDER = 'FOLDER',
