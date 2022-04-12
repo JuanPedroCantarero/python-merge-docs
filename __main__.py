@@ -3,7 +3,7 @@ import cmd
 import os.path
 import PySimpleGUI as sg
 
-outputPath = './data.csv'
+outputFile = 'data.csv'
 
 class EVENTS_KEY():
     FOLDER = 'FOLDER',
@@ -20,7 +20,7 @@ def merge_two_csv_files_with_same_lanes(path, firstFile, secondFile):
     with open(path + firstFile, 'r') as t1, open(path + secondFile , 'r') as t2:
         fileone_to_merge = t1.readlines()
         filetwo_to_merge = t2.readlines()
-    with open(outputPath, 'w') as outFile:
+    with open(outputFile, 'w') as outFile:
         for line in filetwo_to_merge:
             if line in fileone_to_merge:
                 outFile.write(line)
@@ -56,7 +56,8 @@ dando como resultado un csv con las lineas coincidentes'''
             window[EVENTS_KEY.FOLDER].update(folder)
             window[EVENTS_KEY.FILE_LIST].update(fnames)
             window[EVENTS_KEY.MERGE].update(disabled=True)
-            success_window('El csv se ha mezldo con éxito, mire dentro de la carpeta output para ver el resultado')
+            msg = 'El csv se ha mezldo con éxito, mire el archivo {} para ver el resultado'.format(outputFile)
+            success_window(msg)
             
 
     window.close()
